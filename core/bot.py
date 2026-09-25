@@ -15,7 +15,11 @@ class CleanupContext(commands.Context):
 
 class HyphendBot(commands.Bot):
     def __init__(self, config: Config) -> None:
-        super().__init__(command_prefix=config.prefix, self_bot=True)
+        super().__init__(
+            command_prefix=config.prefix,
+            self_bot=True,
+            help_command=None,
+        )
         self.config = config
         self.add_check(self._only_running_account)
 
