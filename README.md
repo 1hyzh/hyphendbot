@@ -8,6 +8,26 @@ pip install -r requirements.txt
 python main.py
 ```
 
+## Coolify
+
+Deploy this repository as a Dockerfile-based worker. Coolify will use the included `Dockerfile`; no public port is required because this is a Discord gateway process.
+
+Add these environment variables in Coolify:
+
+```env
+TOKEN=your-discord-token
+PREFIX=>
+DELETE_AFTER=10
+READALL_DELAY=2
+READALL_LIMIT=25
+CUSTOM_RPC=hyphendbot
+CUSTOM_RPC_TYPE=playing
+CUSTOM_RPC_URL=
+STATUS=online
+```
+
+The local `env` file is excluded from the image. Keep the token in Coolify's environment settings and enable automatic restart so the worker starts again after a crash or redeploy.
+
 The bot reads configuration from the `env` file:
 
 ```env
