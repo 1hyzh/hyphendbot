@@ -11,9 +11,8 @@ class Config:
     custom_rpc_type: str
     custom_rpc_url: str
     status: str
-    lastfm_api_key: str
-    lastfm_username: str
-    lastfm_poll_seconds: float
+    readall_delay: float
+    readall_limit: int
 
     @classmethod
     def from_environment(cls) -> 'Config':
@@ -29,7 +28,6 @@ class Config:
             custom_rpc_type=os.getenv('custom_rpc_type', 'playing').lower(),
             custom_rpc_url=os.getenv('custom_rpc_url', ''),
             status=os.getenv('status', 'online').lower(),
-            lastfm_api_key=os.getenv('lastfm_api_key', '').strip(),
-            lastfm_username=os.getenv('lastfm_username', '').strip(),
-            lastfm_poll_seconds=float(os.getenv('lastfm_poll_seconds', '60')),
+            readall_delay=max(0.0, float(os.getenv('readall_delay', '2'))),
+            readall_limit=max(1, int(os.getenv('readall_limit', '25'))),
         )

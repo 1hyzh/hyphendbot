@@ -16,6 +16,7 @@ class ConfigCog(commands.Cog):
         await ctx.send(
             f'prefix is set to {settings.prefix}\n'
             f'deleting delay is set to {settings.delete_after:g}\n'
+            f'readall limit is set to {settings.readall_limit}\n'
             f'rpc is set to {settings.custom_rpc}\n'
             f'rpc type is set to {settings.custom_rpc_type}\n'
             f'status is set to {settings.status}'
@@ -39,6 +40,19 @@ class ConfigCog(commands.Cog):
     ) -> None:
         self.bot.config.delete_after = seconds
         await ctx.send(f'delete_after set to {seconds:g} seconds')
+
+    @config.command(name='readall_limit')
+    async def config_readall_limit(
+        self,
+        ctx: commands.Context,
+        channels: int,
+    ) -> None:
+        if channels < 1:
+            await ctx.send('readall_limit must be at least 1')
+            return
+
+        self.bot.config.readall_limit = channels
+        await ctx.send(f'readall_limit set to {channels} channels')
 
     @config.command(name='rpc')
     async def config_rpc(

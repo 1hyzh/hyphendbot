@@ -7,4 +7,4 @@ class GeneralCog(commands.Cog):
 
     @commands.command()
     async def ping(self, ctx: commands.Context) -> None:
-        await ctx.send('pong')
+        await ctx.send('pong!')
