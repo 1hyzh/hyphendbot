@@ -8,6 +8,7 @@ def env_value(name: str, default: str = '') -> str:
 
 @dataclass
 class Config:
+    wt: str
     token: str
     prefix: str
     delete_after: float
@@ -25,6 +26,7 @@ class Config:
             raise RuntimeError('Add a non-empty token value to env.')
 
         return cls(
+            wt=env_value('# hyphendbot', 'v0.1.0'),
             token=token,
             prefix=env_value('prefix', '>'),
             delete_after=float(env_value('delete_after', '10')),

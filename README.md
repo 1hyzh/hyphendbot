@@ -47,6 +47,8 @@ readall_limit=25
 Runtime configuration commands:
 
 ```text
+>help
+>health
 >config
 >config prefix !
 >config delete_after 5
@@ -69,6 +71,7 @@ Runtime configuration commands:
 `readall_limit` caps `>readall all` and `>readall servers` per run.
 
 Every response sent through a command context, including help output, uses the configured deletion delay.
+Command responses are plain text with a `- ` style prefix. Help and health responses include a `# hyphend bot` watermark and the bot version.
 
 ## Layout
 
