@@ -37,7 +37,9 @@ class HyphendBot(commands.Bot):
         from cogs.presence.status import StatusCog
         from cogs.presence.rpc import RpcCog
         from cogs.people.block import BlockCog
+        from cogs.stupidthings.ngh import NghmodeCog
         from cogs.utils.readall import ReadAllCog
+        
         
         await self.add_cog(CleanupCog(self))
         await self.add_cog(ConfigCog(self))
@@ -46,5 +48,6 @@ class HyphendBot(commands.Bot):
         await self.add_cog(StatusCog(self))
         await self.add_cog(RpcCog(self))
         await self.add_cog(BlockCog(self))
+        await self.add_cog(NghmodeCog(self))
         await self.add_cog(ReadAllCog(self))
         
