@@ -41,7 +41,7 @@ class HyphendHelpCommand(commands.HelpCommand):
         prefix = self.context.bot.config.prefix
         command_lines = '\n'.join(f'{prefix}{command}' for command in commands_list)
         await self.context.send(
-            f'# hyphend bot '
+            f'### hyphend bot '
             f'version: {self.context.bot.config.wt}\n'
             f'commands:\n{command_lines}'
         )
@@ -53,7 +53,7 @@ class HyphendHelpCommand(commands.HelpCommand):
             usage += f' {command.signature}'
         description = command.help or 'no description available'
         await self.context.send(
-            f'# hyphend bot '
+            f'### hyphend bot '
             f'version: {self.context.bot.config.wt}\n'
             f'command: {usage}\n'
             f'info: {description}'
