@@ -1,4 +1,4 @@
-from cogs.presence import update_presence
+from cogs.presence.presence import update_presence
 from discord.ext import commands
 
 

@@ -1,6 +1,6 @@
 from discord.ext import commands
 
-from cogs.presence import STATUS_VALUES, update_presence
+from cogs.presence.presence import STATUS_VALUES, update_presence
 
 
 class StatusCog(commands.Cog):

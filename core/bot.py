@@ -30,14 +30,14 @@ class HyphendBot(commands.Bot):
         return await super().get_context(message, cls=cls)
 
     async def setup_hook(self) -> None:
-        from cogs.cleanup import CleanupCog
-        from cogs.config import ConfigCog
+        from cogs.coreutils.cleanup import CleanupCog
+        from cogs.coreutils.config import ConfigCog
         from cogs.general import GeneralCog
-        from cogs.presence import PresenceCog
-        from cogs.status import StatusCog
-        from cogs.rpc import RpcCog
-        from cogs.block import BlockCog
-        from cogs.readall import ReadAllCog
+        from cogs.presence.presence import PresenceCog
+        from cogs.presence.status import StatusCog
+        from cogs.presence.rpc import RpcCog
+        from cogs.people.block import BlockCog
+        from cogs.utils.readall import ReadAllCog
         
         await self.add_cog(CleanupCog(self))
         await self.add_cog(ConfigCog(self))
