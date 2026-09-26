@@ -1,4 +1,4 @@
 aiohttp
 discord.py-self==2.0.1
-protobuf>=5,<8
+protobuf<5
 python-dotenv

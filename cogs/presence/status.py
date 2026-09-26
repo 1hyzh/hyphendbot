@@ -7,13 +7,16 @@ class StatusCog(commands.Cog):
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
-    @commands.command()
+    @commands.group(invoke_without_command=True)
     async def status(
         self,
         ctx: commands.Context,
         *,
         value: str = '',
     ) -> None:
+        if ctx.invoked_subcommand is not None:
+            return
+
         value = value.strip().lower()
         if value not in STATUS_VALUES:
             await ctx.send('use online, idle, dnd, or invisible')

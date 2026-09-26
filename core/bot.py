@@ -3,21 +3,8 @@ from discord.ext import commands
 from core.config import Config
 
 
-def style_response(content):
-    if not isinstance(content, str):
-        return content
-
-    return '\n'.join(
-        line
-        if not line.strip() or line.startswith(('- ', '# hyphend bot'))
-        else f'- {line}'
-        for line in content.splitlines()
-    )
-
-
 class CleanupContext(commands.Context):
     async def send(self, content=None, **kwargs):
-        content = style_response(content)
         if (
             'delete_after' not in kwargs
             and self.bot.config.delete_after > 0
@@ -26,46 +13,12 @@ class CleanupContext(commands.Context):
         return await super().send(content, **kwargs)
 
 
-class HyphendHelpCommand(commands.HelpCommand):
-    async def send_bot_help(self, mapping) -> None:
-        commands_list = []
-        for command in sorted(self.context.bot.commands, key=lambda item: item.name):
-            if command.hidden:
-                continue
-
-            usage = command.name
-            if command.signature:
-                usage += f' {command.signature}'
-            commands_list.append(usage)
-
-        prefix = self.context.bot.config.prefix
-        command_lines = '\n'.join(f'{prefix}{command}' for command in commands_list)
-        await self.context.send(
-            f'### hyphend bot '
-            f'version: {self.context.bot.config.wt}\n'
-            f'commands:\n{command_lines}'
-        )
-
-    async def send_command_help(self, command) -> None:
-        prefix = self.context.bot.config.prefix
-        usage = f'{prefix}{command.qualified_name}'
-        if command.signature:
-            usage += f' {command.signature}'
-        description = command.help or 'no description available'
-        await self.context.send(
-            f'### hyphend bot '
-            f'version: {self.context.bot.config.wt}\n'
-            f'command: {usage}\n'
-            f'info: {description}'
-        )
-
-
 class HyphendBot(commands.Bot):
     def __init__(self, config: Config) -> None:
         super().__init__(
             command_prefix=config.prefix,
             self_bot=True,
-            help_command=HyphendHelpCommand(),
+            help_command=None,
         )
         self.config = config
         self.add_check(self._only_running_account)
