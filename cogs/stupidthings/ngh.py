@@ -32,11 +32,11 @@ class NghmodeCog(commands.Cog):
     async def nghmode(
         self,
         ctx: commands.Context,
-        value: str,
+            value: str = '',
     ) -> None:
         value = value.lower()
         if value not in {'true', 'false'}:
-            await ctx.send('usage: >ngh true|false')
+            await ctx.send(' usage: `>ngh true|false`')
             return
 
         self.enabled = value == 'true'

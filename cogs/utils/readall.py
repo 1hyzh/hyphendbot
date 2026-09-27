@@ -16,7 +16,7 @@ class ReadAllCog(commands.Cog):
     ) -> None:
         scope = scope.lower()
         if scope not in {'all', 'servers', 'dms'}:
-            await ctx.send('usage: >readall all|servers|dms')
+            await ctx.send('usage: `>readall all|servers|dms`')
             return
 
         await ctx.send(f'started reading {scope}')

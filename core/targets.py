@@ -22,4 +22,4 @@ async def resolve_user(ctx: commands.Context, target: str = '') -> discord.User:
             except (discord.NotFound, discord.Forbidden, discord.HTTPException):
                 pass
 
-    raise commands.BadArgument('mention a user or reply to their message')
+    raise commands.BadArgument('❌ mention a user or reply to their message')

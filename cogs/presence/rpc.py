@@ -9,7 +9,7 @@ class RpcCog(commands.Cog):
     @commands.group(invoke_without_command=True)
     async def rpc(self, ctx: commands.Context) -> None:
         if ctx.invoked_subcommand is None:
-            await ctx.send('use >rpc text <text> or >rpc type <type>')
+            await ctx.send('use `>rpc text <text>` or `>rpc type <type>`')
 
     @rpc.command(name='text')
     async def rpc_text(
@@ -20,7 +20,7 @@ class RpcCog(commands.Cog):
     ) -> None:
         self.bot.config.custom_rpc = text
         await update_presence(self.bot)
-        await ctx.send(f'rpc text set to {text}')
+        await ctx.send(f'rpc text set to `{text}`')
 
     @rpc.command(name='type')
     async def rpc_type(
@@ -30,9 +30,9 @@ class RpcCog(commands.Cog):
     ) -> None:
         activity_type = activity_type.lower()
         if activity_type not in {'playing', 'listening', 'streaming'}:
-            await ctx.send('use playing, listening, or streaming')
+            await ctx.send('use `playing`, `listening`, or `streaming`')
             return
 
         self.bot.config.custom_rpc_type = activity_type
         await update_presence(self.bot)
-        await ctx.send(f'rpc type set to {activity_type}')
+        await ctx.send(f'rpc type set to `{activity_type}`')

@@ -22,20 +22,20 @@ class BlockCog(commands.Cog):
 		try:
 			user = await resolve_user(ctx, target)
 		except commands.BadArgument:
-			await ctx.send('usage: >block @username or reply to a user')
+			await ctx.send('usage: `>block @username` or reply to a user')
 			return
 
 		if self.bot.user is not None and user.id == self.bot.user.id:
-			await ctx.send('you cannot block the account running this bot')
+			await ctx.send(' ❌ you cannot block the account running this bot')
 			return
 
 		try:
 			await user.block()
 		except (discord.Forbidden, discord.HTTPException):
-			await ctx.send(f'could not block {user}')
+			await ctx.send(f' ❌ could not block `{user}`')
 			return
 
-		await ctx.send(f'blocked {user}')
+		await ctx.send(f'blocked `{user}`')
 
 	@commands.command()
 	async def unblock(
@@ -51,7 +51,7 @@ class BlockCog(commands.Cog):
 		try:
 			user = await resolve_user(ctx, target)
 		except commands.BadArgument:
-			await ctx.send('usage: >unblock @username or reply to a user')
+			await ctx.send('usage: `>unblock @username` or reply to a user')
 			return
 
 		if self.bot.user is not None and user.id == self.bot.user.id:
@@ -61,7 +61,7 @@ class BlockCog(commands.Cog):
 		try:
 			await user.unblock()
 		except (discord.Forbidden, discord.HTTPException):
-			await ctx.send(f'could not unblock {user}')
+			await ctx.send(f' ❌ could not unblock `{user}`')
 			return
 
-		await ctx.send(f'unblocked {user}')
+		await ctx.send(f'unblocked `{user}`')

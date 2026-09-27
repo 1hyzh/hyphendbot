@@ -19,11 +19,11 @@ class StatusCog(commands.Cog):
 
         value = value.strip().lower()
         if value not in STATUS_VALUES:
-            await ctx.send('use online, idle, dnd, or invisible')
+            await ctx.send('use `online`, `idle`, `dnd`, or `invisible`')
             return
 
         self.bot.config.status = value
         await update_presence(self.bot)
-        await ctx.send(f'status set to {value}')
+        await ctx.send(f'- status set to `{value}`')
 
     

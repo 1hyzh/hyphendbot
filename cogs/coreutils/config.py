@@ -14,12 +14,12 @@ class ConfigCog(commands.Cog):
 
         settings = self.bot.config
         await ctx.send(
-            f'prefix is set to {settings.prefix}\n'
-            f'deleting delay is set to {settings.delete_after:g}\n'
-            f'readall limit is set to {settings.readall_limit}\n'
-            f'rpc is set to {settings.custom_rpc}\n'
-            f'rpc type is set to {settings.custom_rpc_type}\n'
-            f'status is set to {settings.status}'
+            f'- prefix is set to `{settings.prefix}`\n'
+            f'- deleting delay is set to `{settings.delete_after:g}` seconds\n'
+            f'- readall limit is set to `{settings.readall_limit}` channels\n'
+            f'- rpc is set to `{settings.custom_rpc}`\n'
+            f'- rpc type is set to `{settings.custom_rpc_type}`\n'
+            f'- status is set to `{settings.status}`'
         )
 
     @config.command(name='prefix')
@@ -30,7 +30,7 @@ class ConfigCog(commands.Cog):
     ) -> None:
         self.bot.config.prefix = prefix
         self.bot.command_prefix = prefix
-        await ctx.send(f'prefix set to {prefix}')
+        await ctx.send(f'prefix set to `{prefix}`')
 
     @config.command(name='delete_after')
     async def config_delete_after(
@@ -39,7 +39,7 @@ class ConfigCog(commands.Cog):
         seconds: float,
     ) -> None:
         self.bot.config.delete_after = seconds
-        await ctx.send(f'delete_after set to {seconds:g} seconds')
+        await ctx.send(f'delete_after set to `{seconds:g}` seconds')
 
     @config.command(name='readall_limit')
     async def config_readall_limit(
@@ -48,11 +48,11 @@ class ConfigCog(commands.Cog):
         channels: int,
     ) -> None:
         if channels < 1:
-            await ctx.send('readall_limit must be at least 1')
+            await ctx.send('readall_limit must be at least `1`')
             return
 
         self.bot.config.readall_limit = channels
-        await ctx.send(f'readall_limit set to {channels} channels')
+        await ctx.send(f'readall_limit set to `{channels}` channels')
 
     @config.command(name='rpc')
     async def config_rpc(
@@ -63,7 +63,7 @@ class ConfigCog(commands.Cog):
     ) -> None:
         self.bot.config.custom_rpc = text
         await update_presence(self.bot)
-        await ctx.send(f'custom_rpc set to {text}')
+        await ctx.send(f'custom_rpc set to `{text}`')
 
     @config.command(name='rpc_type')
     async def config_rpc_type(
@@ -78,4 +78,4 @@ class ConfigCog(commands.Cog):
 
         self.bot.config.custom_rpc_type = activity_type
         await update_presence(self.bot)
-        await ctx.send(f'rpc type set to {activity_type}')
+        await ctx.send(f'rpc type set to `{activity_type}`')
