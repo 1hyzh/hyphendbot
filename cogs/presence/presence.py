@@ -28,9 +28,12 @@ def build_status(config) -> discord.Status:
     return STATUS_VALUES.get(config.status, discord.Status.online)
 
 
-async def update_presence(bot: commands.Bot) -> None:
+async def update_presence(
+    bot: commands.Bot,
+    activity: discord.Activity = None,
+) -> None:
     await bot.change_presence(
-        activity=build_custom_activity(bot.config),
+        activity=activity or build_custom_activity(bot.config),
         status=build_status(bot.config),
     )
 

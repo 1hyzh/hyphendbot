@@ -33,6 +33,7 @@ class HyphendBot(commands.Bot):
         from cogs.coreutils.cleanup import CleanupCog
         from cogs.coreutils.config import ConfigCog
         from cogs.general import GeneralCog
+        from cogs.lastfm.rpc import LastFmRpcCog
         from cogs.presence.presence import PresenceCog
         from cogs.presence.status import StatusCog
         from cogs.presence.rpc import RpcCog
@@ -44,6 +45,7 @@ class HyphendBot(commands.Bot):
         await self.add_cog(CleanupCog(self))
         await self.add_cog(ConfigCog(self))
         await self.add_cog(GeneralCog(self))
+        await self.add_cog(LastFmRpcCog(self))
         await self.add_cog(PresenceCog(self))
         await self.add_cog(StatusCog(self))
         await self.add_cog(RpcCog(self))
