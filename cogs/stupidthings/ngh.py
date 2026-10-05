@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 
 
-class NghmodeCog(commands.Cog):
+class NghmodeCog(commands.Cog): #main class
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
         self.enabled = False
@@ -14,18 +14,18 @@ class NghmodeCog(commands.Cog):
         if (
             not self.enabled
             or self.bot.user is None
-            or message.author.id != self.bot.user.id
+            or message.author.id != self.bot.user.id # obviously u cant edit other peoples mesages 
             or message.content.startswith(self.bot.config.prefix)
         ):
             return
-
+        # delay before adding it 
         await asyncio.sleep(1)
         if not self.enabled:
             return
 
         try:
-            await message.edit(content=f'{message.content} nghhh')
-        except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            await message.edit(content=f'{message.content} nghhh') # edit last message and add it :p
+        except (discord.NotFound, discord.Forbidden, discord.HTTPException): # discord exceptions if they happen its wtv
             pass
 
     @commands.command(name='ngh', aliases=['nghmode'])

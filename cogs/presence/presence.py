@@ -1,7 +1,9 @@
 import discord
 from discord.ext import commands
 
-STATUS_VALUES = {
+# presence handler
+
+STATUS_VALUES = { # this is pretty obvious ngl
     'online': discord.Status.online,
     'idle': discord.Status.idle,
     'dnd': discord.Status.dnd,
@@ -19,7 +21,7 @@ def build_custom_activity(config) -> discord.Activity:
     if activity_type == 'streaming':
         return discord.Streaming(
             name=config.custom_rpc,
-            url=config.custom_rpc_url or 'https://twitch.tv/',
+            url=config.custom_rpc_url or 'https://twitch.tv/', # default rpc url incase it is streaming
         )
     return discord.Game(name=config.custom_rpc)
 
@@ -35,7 +37,7 @@ async def update_presence(
     await bot.change_presence(
         activity=activity or build_custom_activity(bot.config),
         status=build_status(bot.config),
-    )
+    ) # update pressence async cuz network yk
 
 
 class PresenceCog(commands.Cog):

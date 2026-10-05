@@ -3,9 +3,9 @@ from discord.ext import commands
 
 
 async def resolve_user(ctx: commands.Context, target: str = '') -> discord.User:
-    target = target.strip()
+    target = target.strip() # remove any blank characters from target user
     if target:
-        if target.startswith('@') and not target.startswith('<@'):
+        if target.startswith('@') and not target.startswith('<@'): # differentiate between mentions and user id
             target = target[1:]
         return await commands.UserConverter().convert(ctx, target)
 
@@ -19,7 +19,7 @@ async def resolve_user(ctx: commands.Context, target: str = '') -> discord.User:
             try:
                 message = await ctx.channel.fetch_message(reference.message_id)
                 return message.author
-            except (discord.NotFound, discord.Forbidden, discord.HTTPException):
+            except (discord.NotFound, discord.Forbidden, discord.HTTPException): # discord exceptions wtv
                 pass
 
     raise commands.BadArgument('❌ mention a user or reply to their message')

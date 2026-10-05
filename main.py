@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 
-load_dotenv('env')
+load_dotenv('env') # loads env file
 
 from core.bot import HyphendBot
 from core.config import Config

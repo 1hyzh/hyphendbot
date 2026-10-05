@@ -3,7 +3,7 @@ from discord.ext import commands
 from cogs.presence.presence import update_presence
 
 
-class ConfigCog(commands.Cog):
+class ConfigCog(commands.Cog): # main class
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
@@ -13,16 +13,18 @@ class ConfigCog(commands.Cog):
             return
 
         settings = self.bot.config
-        await ctx.send(
+        await ctx.send( # prints current config (the values that can be shown to others)
             f'- prefix is set to `{settings.prefix}`\n'
             f'- deleting delay is set to `{settings.delete_after:g}` seconds\n'
             f'- readall limit is set to `{settings.readall_limit}` channels\n'
             f'- rpc is set to `{settings.custom_rpc}`\n'
             f'- rpc type is set to `{settings.custom_rpc_type}`\n'
-            f'- status is set to `{settings.status}`'
+            f'- status is set to `{settings.status}`\n'
+            f'- last.fm username is set to `{settings.lastfm_username}`\n'
+            f'- last.fm rpc refresh is set to `{settings.lastfm_rpc_refresh:g}` seconds'
         )
 
-    @config.command(name='prefix')
+    @config.command(name='prefix') # change prefix
     async def config_prefix(
         self,
         ctx: commands.Context,
@@ -32,7 +34,7 @@ class ConfigCog(commands.Cog):
         self.bot.command_prefix = prefix
         await ctx.send(f'prefix set to `{prefix}`')
 
-    @config.command(name='delete_after')
+    @config.command(name='delete_after') # change deleting delay
     async def config_delete_after(
         self,
         ctx: commands.Context,

@@ -29,7 +29,7 @@ class HyphendBot(commands.Bot):
     async def get_context(self, message, /, *, cls=CleanupContext):
         return await super().get_context(message, cls=cls)
 
-    async def setup_hook(self) -> None:
+    async def setup_hook(self) -> None: # import all cogs here to avoid circular imports
         from cogs.coreutils.cleanup import CleanupCog
         from cogs.coreutils.config import ConfigCog
         from cogs.general import GeneralCog

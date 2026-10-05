@@ -8,16 +8,16 @@ from discord.ext import commands, tasks
 from pypresence import ActivityType, Presence
 from pypresence.exceptions import PyPresenceException
 
-from cogs.lastfm.imagehandler import (
+from cogs.lastfm.imagehandler import ( 
     get_album_image,
     get_album_name,
     get_full_quality_image,
     get_rpc_image,
-)
-from cogs.presence.presence import update_presence
+) # last.fm image handler
+from cogs.presence.presence import update_presence # presence handler
 
 
-LASTFM_ENDPOINT = 'https://ws.audioscrobbler.com/2.0/'
+LASTFM_ENDPOINT = 'https://ws.audioscrobbler.com/2.0/' # last.fm    
 
 
 class DesktopRpc:

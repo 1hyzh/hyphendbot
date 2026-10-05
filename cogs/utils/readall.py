@@ -4,7 +4,7 @@ import discord
 from discord.ext import commands
 
 
-class ReadAllCog(commands.Cog):
+class ReadAllCog(commands.Cog): #main class
     def __init__(self, bot: commands.Bot) -> None:
         self.bot = bot
 
