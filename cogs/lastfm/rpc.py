@@ -41,7 +41,7 @@ class DesktopRpc:
 
             self.client.update(
                 activity_type=ActivityType.LISTENING,
-                name='music',
+                name=artist + ' - ' + 'music',
                 details=track['name'].strip(),
                 state=album or artist,
                 large_image=large_image,
