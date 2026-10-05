@@ -208,7 +208,7 @@ class LastFmRpcCog(commands.Cog):
 
         activity = discord.Activity(
             type=discord.ActivityType.listening,
-            name='music',
+            name=artist,
             details=title,
             state=album or artist,
             assets=assets,
